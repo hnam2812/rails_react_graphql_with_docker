@@ -1,0 +1,20 @@
+# https://eslint.org/docs/user-guide/configuring#ignoring-files-and-directories
+
+.git/
+.tmp/
+.vscode/
+bin/
+build/
+cable/
+config/
+coverage/
+db/
+lib/
+log/
+public/
+test/
+tmp/
+vendor/
+
+app/assets
+app/javascript-webpacked/graphql

@@ -1,0 +1,19 @@
+setup:
+  addons:
+    - plan: heroku-postgresql:hobby-dev
+    - plan: sendgrid:starter
+  config:
+    RAILS_ENV: staging
+    RACK_ENV: production
+    RAILS_SERVE_STATIC_FILES: true
+
+build:
+  docker:
+    web: Dockerfile-heroku
+
+release:
+  image: web
+  command:
+    - ./deployment-tasks.sh
+run:
+  web: bundle exec puma -C config/puma.rb

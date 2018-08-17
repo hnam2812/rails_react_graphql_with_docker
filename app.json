@@ -1,0 +1,30 @@
+{
+  "name": "skeleton_app",
+  "env": {
+    "HOST": {
+      "required": true
+    },
+    "MAILER_SENDER_ADDRESS": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "required": true,
+      "generator": "secret"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "standard-1X"
+    },
+    "worker": {
+      "quantity": 1,
+      "size": "standard-1X"
+    }
+  },
+  "addons": [
+    "heroku-postgresql:hobby-dev",
+    "sendgrid:starter"
+  ],
+  "stack": "container"
+}

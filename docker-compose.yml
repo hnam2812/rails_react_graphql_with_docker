@@ -1,0 +1,46 @@
+version: '3.1'
+
+services:
+  db:
+    image: library/postgres:10.4
+    environment:
+      POSTGRES_PASSWORD: password
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    depends_on:
+      - web
+    ports:
+      - 80:80
+
+  web:
+    tty: true
+    stdin_open: true
+    command: sh /docker-entrypoint.sh
+    build:
+      context: .
+      dockerfile: ./docker/web/Dockerfile
+    links:
+      - db
+    volumes:
+      - .:/app:cached
+      - bundle_cache:/app/vendor/bundle
+      - yarn_cache:/app/node_modules
+    environment:
+      COMPOSE_PROJECT_NAME: skeleton_app
+      RAILS_ENV: development
+      HOST: localhost
+      PORT: 3000
+      DATABASE_HOST: db
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: password
+      SECRET_KEY_BASE: 8678bd9b1d5721bfba2e6495029822c3f19fd69b25f96977ee425348435ad01833828423be36733e5b4baff72de997365ef04475af8a72422568770765572823
+      MAILER_SENDER_ADDRESS: noreply@example.com
+      RAILS_SERVE_STATIC_FILES: 'true'
+
+volumes:
+  db:
+  bundle_cache:
+  yarn_cache:

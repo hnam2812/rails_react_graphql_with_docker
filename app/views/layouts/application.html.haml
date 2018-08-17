@@ -1,0 +1,20 @@
+!!! 5
+%html
+  %head
+    %title Dashboard
+    %meta{charset: "utf-8"}
+    = display_meta_tags site: "RailsBase", keywords: %w(title site)
+    = csrf_meta_tags
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  %body
+    .container
+      = render 'navigation'
+      = render "messages"
+      %main.container
+        = yield :content
+        = yield
+      = render 'footer'
+      = yield :javascripts

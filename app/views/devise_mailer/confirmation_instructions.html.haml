@@ -1,0 +1,11 @@
+.container
+  .row
+    .col-md-12
+      %h3.text-center
+        Welcome <%= @user.email %>
+      %p.text-center
+        You can confirm your account email through the link below:
+      %div.text-center
+        %button.large.expanded
+          = link_to "Confirm my account", confirmation_url(@user,   
+            confirmation_token: @token)

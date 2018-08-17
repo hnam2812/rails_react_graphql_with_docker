@@ -1,0 +1,9 @@
+<% content_for :javascripts do %>
+  <%= javascript_pack_tag "test_entry" %>
+<% end %>
+
+<% content_for :content do %>
+<div id="test" reactProps='{
+      "id": "1"
+    }'></div>
+<% end %>

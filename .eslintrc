@@ -1,0 +1,78 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2017,
+    "ecmaFeatures": {
+      "jsx": true,
+      "impliedStrict": true
+    }
+  },
+  "plugins": [
+    "react",
+    "typescript",
+    "prettier"
+  ],
+  "extends": [
+    "airbnb-base",
+    "plugin:react/recommended"
+  ],
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./config/webpack/development.js"
+      }
+    }
+  },
+  "rules": {
+    "prefer-destructuring": ["error", {"object": false, "array": false}],
+    "semi": ["error", "never"],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/no-unresolved": "off",
+    "import/extensions": ["error", "never", {
+      "json": "always",
+      "css": "always",
+      "png": "always"
+    }],
+    "no-shadow": ["off"],
+    "camelcase": ["off"],
+    "new-parens": ["off"],
+    "no-plusplus": ["off"],
+    "space-before-function-paren": ["error", {
+      "anonymous": "never",
+      "named": "never",
+      "asyncArrow": "always"
+      }],
+    "comma-dangle": ["error", "never"],
+    "no-restricted-globals": ["error", "name", "length", "event"],
+    "function-paren-newline": ["off"],
+    "arrow-parens": ["error", "as-needed"],
+    "no-new": ["off"],
+    "quotes": ["error", "single", { "avoidEscape": false, "allowTemplateLiterals": true }],
+    "no-param-reassign": ["warn"],
+    "no-underscore-dangle": ["off"],
+    "no-console": ["error"],
+    "no-debugger": ["error"],
+    "react/prop-types": ["off"],
+    "class-methods-use-this": ["off"],
+    "prettier/prettier": ["off"],
+    "indent": ["off"],
+    "space-infix-ops": ["off"],
+    "object-curly-newline": ["off"]
+  },
+  "overrides": [{
+    "files": ["**/*.ts", "**/*.tsx"],
+    "parser": "typescript-eslint-parser",
+    "rules": {
+      "no-undef": "off",
+      "typescript/no-unused-vars": "error",
+      "typescript/class-name-casing": "error",
+      "typescript/no-use-before-define": "error"
+    }
+  }]
+}

@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "declaration": false,
+    "target": "es2017",
+    "module": "es6",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "sourceMap": true,
+    "removeComments": false,
+    "lib": ["es6", "es2017", "dom"],
+
+    "experimentalDecorators": true,
+    "newLine": "LF",
+    "outDir": "build/ts",
+    "noImplicitReturns": false,
+    "allowUnreachableCode": false,
+    "noImplicitUseStrict": false,
+    "allowUnusedLabels": false,
+    "strict": true,
+    "skipLibCheck": true,
+    "jsx": "react",
+    "baseUrl": "app/javascript-webpacked"
+  },
+  "formatCodeOptions": {
+    "indentSize": 2,
+    "tabSize": 2,
+    "newLineCharacter": "\n",
+    "convertTabsToSpaces": true,
+    "insertSpaceAfterCommaDelimiter": true,
+    "insertSpaceAfterSemicolonInForStatements": true,
+    "insertSpaceBeforeAndAfterBinaryOperators": true,
+    "insertSpaceAfterKeywordsInControlFlowStatements": true,
+    "insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+    "insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+    "placeOpenBraceOnNewLineForFunctions": false,
+    "placeOpenBraceOnNewLineForControlBlocks": false
+  },
+  "exclude": ["node_modules", "vendor", "public"],
+  "compileOnSave": false
+}

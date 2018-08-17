@@ -1,0 +1,24 @@
+.row
+  .col-sm-6.col-sm-offset-3
+    %h2= title("Sign up")
+    .panel.panel-default
+      .panel-heading Sign up
+      .panel-body
+        = simple_form_for resource,
+        as: resource_name,
+        url: registration_path(resource_name) do |f|
+          = devise_error_messages!
+          .form-group
+            = f.label :email, class: 'control-label'
+            = f.email_field :email, autofocus: true, class: "form-control"
+
+          .form-group
+            = f.label :password, class: 'control-label'
+            = f.password_field :password, autocomplete: "off", class: "form-control"
+
+          .form-group
+            = f.label :password_confirmation, class: 'control-label'
+            = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
+
+          .form-group
+            = f.submit 'Sign up', class: 'btn btn-primary'

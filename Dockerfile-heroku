@@ -1,0 +1,39 @@
+FROM ruby:2.5.1
+
+RUN apt-get update && \
+    apt-get install -y curl apt-transport-https wget && \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+    yarn \
+    graphviz \
+    supervisor \
+    nginx \
+    ca-certificates \
+    cron \
+    libmagic-dev \
+    less \
+    libpq-dev
+
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
+    apt-get install nodejs && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN mkdir /app
+COPY . /app
+WORKDIR /app
+RUN chmod +x /app/deployment-tasks.sh
+
+ENV RAILS_ENV=staging
+ENV RACK_ENV=production
+ENV NODE_ENV=production
+ENV MAILER_SENDER_ADDRESS=noreply@example.com
+ENV HOST=skeleton_app.herokuapp.com
+ENV PORT=80
+ENV RAILS_SERVE_STATIC_FILES=true
+ENV SECRET_KEY_BASE=b916658ea26a5faf3f6eee5a9931d362efb81db2e83ddc6910cd1f3c0e6887427bb110dfdad9f67f33632ddd636ad0d886853a9f13555b576b7467aa87908dac
+
+RUN bundle install --jobs=4 --without development test
+RUN yarn install
+RUN bundle exec rake assets:precompile
